@@ -33,6 +33,7 @@ import {
   SidebarRail,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 type NavItem = {
   label: string;
@@ -71,8 +72,18 @@ const sidebarData: SidebarData = {
         {
           label: "Dashboard",
           icon: LayoutDashboard,
-          href: "#",
+          href: "/dashboard",
           isActive: true,
+        },
+        {
+          label: "Write Blog",
+          icon: ClipboardList,
+          href: "/dashboard/write-blog",
+        },
+        {
+          label: "Analytics",
+          icon: BarChart3,
+          href: "/dashboard/analytics",
         },
         { label: "Tasks", icon: ClipboardList, href: "#" },
         { label: "Roadmap", icon: BarChart3, href: "#" },
@@ -87,6 +98,7 @@ const sidebarData: SidebarData = {
     ],
   },
 };
+
 
 const SidebarLogo = ({ logo }: { logo: SidebarData["logo"] }) => {
   return (
@@ -127,7 +139,7 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
                 {group.items.map((item) => (
                   <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton asChild isActive={item.isActive}>
-                      <a href={item.href}>{item.label}</a>
+                      <Link href={item.href}>{item.label}</Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
@@ -159,9 +171,10 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
 
 interface Sidebar1Props {
   className?: string;
+  children: React.ReactNode;
 }
 
-const Sidebar1 = ({ className }: Sidebar1Props) => {
+const Sidebar1 = ({ className,children }: Sidebar1Props) => {
   return (
     <SidebarProvider className={cn(className)}>
       <AppSidebar />
@@ -185,7 +198,8 @@ const Sidebar1 = ({ className }: Sidebar1Props) => {
           </Breadcrumb>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+          {/* <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" /> */}
+           {children}
         </div>
       </SidebarInset>
     </SidebarProvider>
