@@ -4,7 +4,9 @@ export default function CommonLayout({children}:{children:React.ReactNode}){
     return(
         <div>
            
-                <Navbar/>
+              <div>
+                  <Navbar/>
+              </div>
           
             {children}
         </div>

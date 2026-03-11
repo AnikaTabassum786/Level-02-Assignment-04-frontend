@@ -1,7 +1,9 @@
+"use client"
 import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { authClient } from "@/lib/auth-client";
 
 interface Login1Props {
   heading?: string;
@@ -32,6 +34,23 @@ const Login = ({
   signupUrl = "https://shadcnblocks.com",
   className,
 }: Login1Props) => {
+
+//  const handleGoogleLogin = async()=>{
+//   const data = authClient.signIn.social({
+//     provider:"google",
+//     callbackURL:"http://localhost:3000"
+//   })
+//   console.log(data)
+//  }
+
+const handleGoogleLogin = async () => {
+  await authClient.signIn.social({
+    provider: "google",
+    callbackURL: "http://localhost:3000",
+  });
+};
+
+
   return (
     <section className={cn("mt-20", className)}>
       <div className="flex h-full items-center justify-center">
@@ -61,6 +80,9 @@ const Login = ({
             />
             <Button type="submit" className="w-full">
               {buttonText}
+            </Button>
+            <Button onClick={()=>handleGoogleLogin()} type="submit" className="w-full">
+              Log in with Google
             </Button>
           </div>
           <div className="flex justify-center gap-1 text-sm text-muted-foreground">
