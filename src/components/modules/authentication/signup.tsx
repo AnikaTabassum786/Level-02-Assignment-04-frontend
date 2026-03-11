@@ -1,3 +1,5 @@
+"use client"
+
 import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
@@ -32,6 +34,8 @@ const Signup = ({
   signupUrl = "https://shadcnblocks.com",
   className,
 }: Signup1Props) => {
+
+  
   return (
     <section className={cn("mt-20", className)}>
       <div className="flex h-full items-center justify-center">

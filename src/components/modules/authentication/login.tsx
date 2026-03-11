@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/lib/auth-client";
+import { useState } from "react";
 
 interface Login1Props {
   heading?: string;
@@ -35,13 +36,19 @@ const Login = ({
   className,
 }: Login1Props) => {
 
-//  const handleGoogleLogin = async()=>{
-//   const data = authClient.signIn.social({
-//     provider:"google",
-//     callbackURL:"http://localhost:3000"
-//   })
-//   console.log(data)
-//  }
+const [email,setEmail] = useState("")
+const [password,setPassword] = useState("")
+
+const session = authClient.useSession()
+const handleEmailLogin = async () => {
+    const data = await authClient.signIn.email({
+      email,
+      password,
+      callbackURL: "http://localhost:3000"
+    })
+
+    console.log("LOGIN RESULT:", data)
+  }
 
 const handleGoogleLogin = async () => {
   await authClient.signIn.social({
@@ -49,6 +56,9 @@ const handleGoogleLogin = async () => {
     callbackURL: "http://localhost:3000",
   });
 };
+
+//  const session = authClient.useSession();
+//  console.log(session.data)
 
 
   return (
@@ -71,14 +81,20 @@ const handleGoogleLogin = async () => {
               placeholder="Email"
               className="text-sm"
               required
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
             />
             <Input
               type="password"
               placeholder="Password"
               className="text-sm"
               required
+               value={password}
+              onChange={(e)=>setPassword(e.target.value)}
             />
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full"
+            onClick={handleEmailLogin}
+            >
               {buttonText}
             </Button>
             <Button onClick={()=>handleGoogleLogin()} type="submit" className="w-full">
