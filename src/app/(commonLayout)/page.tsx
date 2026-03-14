@@ -10,7 +10,6 @@ export default async function Home() {
   console.log(data)
 
   const medicines = await medicineService.getMedicines();
-
   console.log(medicines);
 
   return (
