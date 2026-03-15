@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Medicine } from "@/types"
+import Link from "next/link"
 
 export function MedicineCard({ medicine }: { medicine: Medicine }) {
   return (
@@ -37,8 +38,14 @@ export function MedicineCard({ medicine }: { medicine: Medicine }) {
           {medicine.description}
         </p>
 
-        <p className="flex justify-end text-sm">Read more</p>
+        {/* <p className="flex justify-end text-sm hover:underline hover:cursor-pointer hover:duration-300 hover:scale-95">Read more</p> */}
 
+<Link
+    href={`/medicines/${medicine.id}`}
+    className="flex justify-end text-sm hover:underline hover:cursor-pointer hover:duration-300 hover:scale-95"
+  >
+    Read more
+  </Link>
         <div className="flex justify-between items-center">
           <span className="text-lg font-bold text-green-600">
             ৳ {medicine.price}
@@ -51,12 +58,12 @@ export function MedicineCard({ medicine }: { medicine: Medicine }) {
       </CardContent>
 
       {/* Footer */}
-      <CardFooter className="flex gap-2 justify-between p-4">
-        <Button className="w-1/2">Add to Cart</Button>
-        {/* <Button variant="outline" className="w-1/2">
+      {/* <CardFooter className="flex gap-2 justify-between p-4">
+        <Button className="w-full">Add to Cart</Button>
+        <Button variant="outline" className="w-1/2">
           Details
-        </Button> */}
-      </CardFooter>
+        </Button>
+      </CardFooter> */}
 
     </Card>
   )

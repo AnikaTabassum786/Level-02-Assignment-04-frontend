@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
 import { env } from "../../env";
 
-const AUTH_URL = env.AUTH_URL
-
+// const AUTH_URL = env.AUTH_URL
+const API_URL = env.API_URL
 
 export const medicineService = {
   getMedicines: async () => {
@@ -21,27 +21,23 @@ export const medicineService = {
       return [];
     }
   },
+   
+  getMedicineById: async (id: string) => {
+    try {
+      const res = await fetch(`${API_URL}/api/medicines/${id}`, {
+        cache: "no-store",
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch medicine");
+      }
+
+      return await res.json();
+    } catch (error) {
+      console.error("Single medicine fetch error:", error);
+      return null;
+    }
+  },
+
 };
 
-// export const medicineService = {
-//     getMedicines: async function () {
-//         try {
-//             const cookieStore = await cookies();
-
-//             const res = await fetch(`${AUTH_URL}/api/medicines`, {
-//                 headers: {
-//                     Cookie: cookieStore.toString(),
-//                 },
-//                 cache: "no-store",
-//             });
-
-//             const data = await res.json();
-
-//             return data;
-//         } catch (error) {
-//             console.error("Medicine fetch error:", error);
-//             return null;
-//         }
-
-//     },
-// };
