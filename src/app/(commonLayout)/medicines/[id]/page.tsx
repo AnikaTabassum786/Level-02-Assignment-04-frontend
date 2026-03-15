@@ -2,10 +2,7 @@ import Image from "next/image";
 import { medicineService } from "@/services/medicine.service";
 import { Button } from "@/components/ui/button";
 
-export default async function MedicineDetailsPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
+export default async function MedicineDetailsPage({params,}: {params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
 
@@ -15,7 +12,6 @@ export default async function MedicineDetailsPage({
 
   console.log("Server Response:", medicine);
 
-  // const medicine = medicineResponse?.data;
 
   if (!medicine) {
     return (
