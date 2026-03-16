@@ -5,8 +5,8 @@ export const sellerRoute:Route[]= [
       title: "Seller Management",
       items: [
         {
-          title: "Analytics",
-          url: "/seller-dashboard/analytics",
+          title: "Add Medicine",
+          url: "/seller-dashboard/add-medicine",
         }
       ],
     }
