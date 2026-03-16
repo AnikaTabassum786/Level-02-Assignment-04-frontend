@@ -105,6 +105,7 @@ import { Input } from "@/components/ui/input"
 import { authClient } from "@/lib/auth-client"
 import { useForm } from "@tanstack/react-form"
 import * as z from "zod"
+import { toast } from "sonner";
 
 interface Login1Props {
   heading?: string
@@ -137,14 +138,29 @@ const Login = ({
 
     onSubmit: async ({ value }) => {
 
-      const data = await authClient.signIn.email({
-        email: value.email,
-        password: value.password,
-        callbackURL: "http://localhost:3000",
-      })
+  const toastId = toast.loading("Login user...");
 
-      console.log("LOGIN RESULT:", data)
-    },
+  try {
+    const data = await authClient.signIn.email({
+     
+      email: value.email,
+      password: value.password,
+      callbackURL: "http://localhost:3000",
+    });
+
+    console.log("Signup result:", data);
+
+    if (data) {
+      toast.success("User Login Successfully", { id: toastId });
+     
+    } else {
+      toast.error("Login failed", { id: toastId });
+    }
+
+  } catch (error) {
+    toast.error("Something went wrong", { id: toastId });
+  }
+}
   })
 
   const handleGoogleLogin = async () => {

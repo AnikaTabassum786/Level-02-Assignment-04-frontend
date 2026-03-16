@@ -132,6 +132,7 @@ import * as z from "zod"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { authClient } from "@/lib/auth-client"
+import { toast } from "sonner";
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -158,22 +159,31 @@ export default function Signup() {
     validators: {
       onSubmit: formSchema,
     },
-
     onSubmit: async ({ value }) => {
 
-      const data = await authClient.signUp.email({
-        name: value.name,
-        email: value.email,
-        password: value.password,
-        callbackURL: "http://localhost:3000",
-      })
+  const toastId = toast.loading("Creating account...");
 
-      console.log("Signup result:", data)
+  try {
+    const data = await authClient.signUp.email({
+      name: value.name,
+      email: value.email,
+      password: value.password,
+      callbackURL: "http://localhost:3000",
+    });
 
-      if (data) {
-        router.push("/")
-      }
-    },
+    console.log("Signup result:", data);
+
+    if (data) {
+      toast.success("User Created Successfully", { id: toastId });
+      router.push("/");
+    } else {
+      toast.error("Signup failed", { id: toastId });
+    }
+
+  } catch (error) {
+    toast.error("Something went wrong", { id: toastId });
+  }
+}
   })
 
   return (
