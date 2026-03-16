@@ -2,44 +2,42 @@ import { Roles } from "@/constants/roles";
 import { userService } from "@/services/user.service";
 import { NextRequest, NextResponse } from "next/server";
 
+const roleDashboardMap = {
+  [Roles.admin]: "/admin-dashboard",
+  [Roles.seller]: "/seller-dashboard",
+  [Roles.customer]: "/dashboard",
+};
 
 export async function proxy(request: NextRequest) {
 
     const pathname = request.nextUrl.pathname;
-
-    // let isAuthenticated = false;
-    // let isAdmin = false;
-    // let role;
-
     const { data } = await userService.getSession()
-
-    // if (data) {
-    //     isAuthenticated = true;
-    //     isAdmin = data.user.role === Roles.admin
-    // }
 
     if (!data) {
         return NextResponse.redirect(new URL("/login", request.url))
     }
 
     const role = data.user.role
-    // ADMIN protection
+
+    // ADMIN 
     if (pathname.startsWith("/admin-dashboard") && role !== Roles.admin) {
-        return NextResponse.redirect(new URL("/login", request.url));
+        return NextResponse.redirect(new URL(roleDashboardMap[role], request.url));
     }
 
-    // SELLER protection
+    // SELLER 
     if (pathname.startsWith("/seller-dashboard") && role !== Roles.seller) {
-        return NextResponse.redirect(new URL("/login", request.url));
+        return NextResponse.redirect(new URL(roleDashboardMap[role], request.url));
     }
 
-    // CUSTOMER protection
+    // CUSTOMER
     if (pathname.startsWith("/dashboard") && role !== Roles.customer) {
-        return NextResponse.redirect(new URL("/login", request.url));
+        return NextResponse.redirect(new URL(roleDashboardMap[role], request.url));
     }
+
     return NextResponse.next()
 }
 
 export const config = {
-    matcher: ["/dashboard", "/admin-dashboard", "/seller-dashboard"]
+    // matcher: ["/dashboard", "/admin-dashboard", "/seller-dashboard"]
+    matcher: ["/dashboard/:path*", "/admin-dashboard/:path*", "/seller-dashboard/:path*"]
 }

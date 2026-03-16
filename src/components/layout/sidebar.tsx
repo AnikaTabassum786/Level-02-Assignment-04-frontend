@@ -269,6 +269,8 @@ type SidebarProps = {
 const Sidebar1 = ({ user, ...props }: SidebarProps) => {
   let routes: Route[] = [];
 
+  console.log(user.role)
+
   switch (user.role) {
     case Roles.admin:
       routes = adminRoute;
