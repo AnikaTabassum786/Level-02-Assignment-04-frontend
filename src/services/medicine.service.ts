@@ -2,6 +2,7 @@
 import { cookies } from "next/headers";
 import { env } from "../../env";
 
+
 // const AUTH_URL = env.AUTH_URL
 const API_URL = env.API_URL
 
@@ -12,9 +13,8 @@ export interface MedicineData {
   stock: number;
   manufacturer: string;
   imageURL?: string;
-
   categoryId: string;
-  sellerId: string;
+  sellerId?: string;
 }
 
 export const medicineService = {
@@ -55,8 +55,9 @@ export const medicineService = {
   createMedicine:async(medicineData:MedicineData)=>{
       try{
             const cookieStore = await cookies()
+            console.log(cookieStore)
            
-                 const res = await fetch(`${API_URL}/posts`,{
+                 const res = await fetch(`${API_URL}/seller/medicines`,{
                    method:"POST",
                    headers:{
                      "Content-Type":"application/json",
@@ -66,19 +67,14 @@ export const medicineService = {
                  })
 
                  const data = await res.json();
-
-                 if(data.error){
-                    return {
-                        data:null,
-                        error:{message:"Error: Post not created"}
-                    }
-                 }
                  return {data:data,error:null}
+
+
+                 
         }
         catch(err){
           return{data:null,error:{message:"Something Went Wrong"}}
         }
   }
-
 };
 

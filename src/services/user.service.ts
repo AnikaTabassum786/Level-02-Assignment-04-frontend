@@ -19,7 +19,7 @@ export const userService = {
       });
 
       const session = await res.json();
-
+      console.log("Session:",session)
       if (!session) {
         return { data: null, error: { message: "Session is missing" } };
       }

@@ -4,6 +4,7 @@ import { categoryService } from "@/services/category.service";
 
 export default async function AddMedicinePage(){
   const res = await categoryService.getCategories();
+  
 
   const categories = res.data;
   console.log(categories)
