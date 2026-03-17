@@ -1,12 +1,18 @@
 import AddMedicineFormClient from "@/components/modules/seller/add-medicine/AddMedicineFormClient";
 import AddMedicineFormServer from "@/components/modules/seller/add-medicine/AddMedicineFormServer";
+import { categoryService } from "@/services/category.service";
 
-export default function AddMedicinePage(){
+export default async function AddMedicinePage(){
+  const res = await categoryService.getCategories();
+
+  const categories = res.data;
+  console.log(categories)
+
   return(
     <>
        Add Medicine Page
          {/* <AddMedicineFormServer></AddMedicineFormServer> */}
-         <AddMedicineFormClient></AddMedicineFormClient>
+         <AddMedicineFormClient categories={categories}/>
  </>
   )
 }
