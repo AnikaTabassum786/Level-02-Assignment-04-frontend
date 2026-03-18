@@ -4,7 +4,7 @@ import { env } from "../../env";
 import { error } from "console";
 
 
-// const AUTH_URL = env.AUTH_URL
+
 const API_URL = env.API_URL
 
 export interface MedicineData {
@@ -21,7 +21,7 @@ export interface MedicineData {
 export const medicineService = {
   getMedicines: async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/medicines", {
+      const res = await fetch(`${API_URL}/api/medicines`, {
         cache: "no-store",
       });
 
