@@ -41,8 +41,8 @@ const medicineSchema = z.object({
   categoryId: z.string()
     .min(1, "Category is required"),
 
-  sellerId: z.string()
-    .min(1, "Seller is required"),
+  // sellerId: z.string()
+  //   .min(1, "Seller is required"),
 });
 
 type Category = {
@@ -57,6 +57,7 @@ export default function AddMedicineFormClient({
 }) {
   console.log(categories);
 
+  
 
 
   const form = useForm({
@@ -67,7 +68,7 @@ export default function AddMedicineFormClient({
       stock: "",
       manufacturer: "",
       categoryId: "",
-      // sellerId:""
+      // sellerId:"GbXp3SmhF9IF6d06QCm1u4Q4ydKhIgOu"
     },
     validators: {
       onSubmit: medicineSchema
@@ -88,20 +89,20 @@ export default function AddMedicineFormClient({
 
       console.log(medicineData); 
 
-      // try {
-      //   const res = await createMedicine(medicineData)
-      //   console.log(res) // I get error here
-      //   if (res.error) {
-      //     toast.error(res.error.message, { id: toastId })
-      //     return;
-      //   }
+      try {
+        const res = await createMedicine(medicineData)
+        console.log(res) // I get error here
+        if (res.error) {
+         toast.error("Something went wrong", { id: toastId });
+          return;
+        }
 
-      //   toast.success("Medicine Created Successfully", { id: toastId });
-      // }
-      // catch (err:any) {
-      //    console.error("Create medicine error:", err)
-      //   toast.error(err)
-      // }
+        toast.success("Medicine Created Successfully", { id: toastId });
+      }
+      catch (err:any) {
+        console.error("Create medicine error:", err)
+        toast.error(err)
+      }
 
 
     }

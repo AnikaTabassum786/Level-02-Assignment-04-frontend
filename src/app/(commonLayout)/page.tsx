@@ -14,7 +14,7 @@ export default async function Home() {
 
   return (
     <div className="flex  items-center justify-center bg-zinc-00 font-sans dark:bg-black">
-      <div className="max-w-7xl mx-auto px-4 flex gap-6">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-4 gap-6">
         {
           medicines?.data?.data?.map((medicine: Medicine) => (
             <MedicineCard key={medicine.id} medicine={medicine} />
