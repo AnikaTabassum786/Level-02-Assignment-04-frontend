@@ -8,3 +8,8 @@ export const createMedicine = async(data:MedicineData)=>{
     // updateTag("")
     return res
 }
+
+export const deleteMedicine = async (id: string) => {
+  const res = await medicineService.deleteMedicineById(id);
+  return res;
+};

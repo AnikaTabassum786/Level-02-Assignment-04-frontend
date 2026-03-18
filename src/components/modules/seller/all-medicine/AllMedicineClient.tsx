@@ -1,0 +1,167 @@
+// 'use client'
+
+// import { medicineService } from "@/services/medicine.service"
+
+// import {
+//     Table,
+//     TableBody,
+//     TableCaption,
+//     TableCell,
+//     TableFooter,
+//     TableHead,
+//     TableHeader,
+//     TableRow,
+// } from "@/components/ui/table"
+// import { Button } from "@/components/ui/button"
+
+
+
+// export default async function AllMedicineClient() {
+
+//     const medicines = await medicineService.getMedicines()
+//     console.log(medicines)
+
+//     //  const router = useRouter();
+
+//   const handleDelete = async (id: string) => {
+//     const confirmDelete = confirm("Are you sure?");
+//     if (!confirmDelete) return;
+
+//     const res = await medicineService.deleteMedicineById(id);
+
+//     if (res.success) {
+//       alert("Deleted successfully");
+//     //   router.refresh(); // 🔥 re-fetch server data
+//     } else {
+//       alert(res.message);
+//     }
+//   };
+
+//     return (
+//         <>
+//             <div>
+//                 <Table>
+//                     <TableHeader>
+//                         <TableRow>
+//                             <TableHead >Medicine Name</TableHead>
+//                             <TableHead>Manufacturer</TableHead>
+//                             <TableHead>Stock</TableHead>
+//                             <TableHead>Price</TableHead>
+//                             <TableHead className="flex  items-center">Action</TableHead>
+//                         </TableRow>
+//                     </TableHeader>
+//                     <TableBody>
+//                         {medicines?.data?.data?.length === 0 ? (
+//                             <TableRow>
+//                                 <TableCell colSpan={5} className="text-center">
+//                                     No medicines found
+//                                 </TableCell>
+//                             </TableRow>
+//                         ) : (
+//                             medicines?.data?.data?.map((medicine: any) => (
+//                                 <TableRow key={medicine.id}>
+//                                     <TableCell className="font-medium">{medicine.name}</TableCell>
+//                                     <TableCell>{medicine.manufacturer}</TableCell>
+//                                     <TableCell>{medicine.stock}</TableCell>
+//                                     <TableCell>{medicine.price}</TableCell>
+//                                     <TableCell className="flex gap-2">
+//                                         <div><Button>Edit</Button></div>
+                                         
+//                                         <div><Button
+//                                         onClick={() => handleDelete(medicine.id)}
+//                                         >Delete</Button></div>
+//                                     </TableCell>
+//                                 </TableRow>
+//                             ))
+//                         )}
+//                     </TableBody>
+//                 </Table>
+//             </div>
+//         </>
+//     )
+// }
+
+
+
+'use client'
+
+import { deleteMedicine } from "@/action/medicine.action";
+import { useState } from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+
+// ✅ Define props type
+interface Medicine {
+  id: string;
+  name: string;
+  manufacturer: string;
+  stock: number;
+  price: number;
+}
+
+interface AllMedicineClientProps {
+  initialData: Medicine[];
+}
+
+export default function AllMedicineClient({ initialData }: AllMedicineClientProps) {
+  const [medicines, setMedicines] = useState(initialData);
+
+  const handleDelete = async (id: string) => {
+    const confirmDelete = confirm("Are you sure?");
+    if (!confirmDelete) return;
+
+    const res = await deleteMedicine(id);
+
+    if (res.success) {
+      alert("Deleted successfully");
+      setMedicines(medicines.filter((m) => m.id !== id));
+    } else {
+      alert(res.message);
+    }
+  };
+
+  return (
+    <div>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Medicine Name</TableHead>
+            <TableHead>Manufacturer</TableHead>
+            <TableHead>Stock</TableHead>
+            <TableHead>Price</TableHead>
+            <TableHead>Action</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {medicines.length === 0 ? (
+            <TableRow>
+              <TableCell colSpan={5} className="text-center">
+                No medicines found
+              </TableCell>
+            </TableRow>
+          ) : (
+            medicines.map((medicine) => (
+              <TableRow key={medicine.id}>
+                <TableCell>{medicine.name}</TableCell>
+                <TableCell>{medicine.manufacturer}</TableCell>
+                <TableCell>{medicine.stock}</TableCell>
+                <TableCell>{medicine.price}</TableCell>
+                <TableCell className="flex gap-2">
+                  <Button>Edit</Button>
+                  <Button onClick={() => handleDelete(medicine.id)}>Delete</Button>
+                </TableCell>
+              </TableRow>
+            ))
+          )}
+        </TableBody>
+      </Table>
+    </div>
+  );
+}
