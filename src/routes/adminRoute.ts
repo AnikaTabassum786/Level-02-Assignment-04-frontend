@@ -6,8 +6,8 @@ export const adminRoute:Route[]= [
       title: "admin Management",
       items: [
         {
-          title: "Analytics",
-          url: "/admin-dashboard/analytics",
+          title: "All Users",
+          url: "/admin-dashboard/all-users",
         }
       ],
     }
