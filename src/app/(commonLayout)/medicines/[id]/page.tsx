@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { medicineService } from "@/services/medicine.service";
-import AddToCartFromClient from "@/components/modules/cart/AddToCartFromClient";
-
-
+import AddToCartFromClient from "@/components/modules/add-to-cart/AddToCartFromClient";
 
 
 export default async function MedicineDetailsPage({params,}: {params: Promise<{ id: string }>;

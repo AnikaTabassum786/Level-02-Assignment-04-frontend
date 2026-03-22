@@ -53,34 +53,7 @@ export const medicineService = {
     }
   },
 
-  // createMedicine:async(medicineData:MedicineData)=>{
-  //     try{
-            
-           
-  //                const res = await fetch(`${API_URL}/api/seller/medicines`,{
-  //                  method:"POST",
-  //                  headers:{
-  //                    "Content-Type":"application/json",
-  //                    Cookie:cookieStore.toString()
-  //                  },
-  //                  credentials:"include",
-  //                  body:JSON.stringify(medicineData)
-  //                })
-
-  //                const data = await res.json();
-  //                if(!res.ok){
-  //                   return {data:null,error}
-  //                }
-  //                return {data:data,error:null}
-
-
-                 
-  //       }
-  //       catch(err){
-  //         console.log(error)
-  //         return{data:null,error:{message:"Something Went Wrong"}}
-  //       }
-  // },
+ 
 
    createMedicine:async(medicineData:MedicineData)=>{
       try{
