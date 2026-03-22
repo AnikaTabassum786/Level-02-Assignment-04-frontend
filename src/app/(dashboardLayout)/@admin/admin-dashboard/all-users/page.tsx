@@ -1,7 +1,7 @@
 import AllUsersServer from "@/components/modules/admin/all-users/AllUsersServer";
 
 
-export default async function AllMedicinePage() {
+export default async function AllUsersPage() {
 
     return (
         <>
