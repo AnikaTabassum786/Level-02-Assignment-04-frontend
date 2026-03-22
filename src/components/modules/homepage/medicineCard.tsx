@@ -40,12 +40,12 @@ export function MedicineCard({ medicine }: { medicine: Medicine }) {
 
         {/* <p className="flex justify-end text-sm hover:underline hover:cursor-pointer hover:duration-300 hover:scale-95">Read more</p> */}
 
-<Link
-    href={`/medicines/${medicine.id}`}
-    className="flex justify-end text-sm hover:underline hover:cursor-pointer hover:duration-300 hover:scale-95"
-  >
-    Read more
-  </Link>
+        <Link
+          href={`/medicines/${medicine.id}`}
+          className="flex justify-end text-sm hover:underline hover:cursor-pointer hover:duration-300 hover:scale-95"
+        >
+          Read more
+        </Link>
         <div className="flex justify-between items-center">
           <span className="text-lg font-bold text-green-600">
             ৳ {medicine.price}

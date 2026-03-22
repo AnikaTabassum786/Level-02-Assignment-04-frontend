@@ -97,7 +97,7 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 
-// ✅ Define props type
+
 interface Medicine {
   id: string;
   name: string;

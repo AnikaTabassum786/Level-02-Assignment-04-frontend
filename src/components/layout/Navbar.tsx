@@ -77,7 +77,10 @@ const Navbar = ({
     {
       title: "Dashboard",
       url: "/dashboard",
-
+    },
+    {
+      title: "Cart",
+      url: "/cart",
     }
   ],
   auth = {

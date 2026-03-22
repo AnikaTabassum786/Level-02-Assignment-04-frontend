@@ -1,17 +1,17 @@
 import Image from "next/image";
 import { medicineService } from "@/services/medicine.service";
-import { Button } from "@/components/ui/button";
+import AddToCartFromClient from "@/components/modules/cart/AddToCartFromClient";
+
+
+
 
 export default async function MedicineDetailsPage({params,}: {params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
 
   console.log("Server ID:", id);
-
   const medicine = await medicineService.getMedicineById(id);
-
   console.log("Server Response:", medicine);
-
 
   if (!medicine) {
     return (
@@ -24,7 +24,7 @@ export default async function MedicineDetailsPage({params,}: {params: Promise<{ 
   return (
     <div className="max-w-6xl mx-auto p-6">
       <div className="grid md:grid-cols-2 gap-8 items-center">
-        
+
         {/* Image */}
         <div className="relative w-full h-[400px]">
           {/* <Image
@@ -48,10 +48,13 @@ export default async function MedicineDetailsPage({params,}: {params: Promise<{ 
           <p className="text-md">
             Stock: <span className="font-medium">{medicine.stock}</span>
           </p>
+           {/* <Button className="w-1/3">Add to Cart</Button> */}
 
-           <Button className="w-1/3">Add to Cart</Button>
+           <AddToCartFromClient medicineId={medicine.id}/>
         </div>
       </div>
     </div>
   );
 }
+
+
