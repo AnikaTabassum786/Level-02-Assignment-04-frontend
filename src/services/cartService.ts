@@ -38,23 +38,32 @@ export const cartService = {
   },
 
   getAllOwnCartItems: async () => {
-    try {
-      const res = await fetch(`${API_URL}/api/cart`, {
-        cache: "no-store",
-      });
+  try {
 
-      if (!res.ok) {
-        throw new Error("Failed to fetch Items");
-      }
+    const cookieStore = await cookies(); 
+    const cookieHeader = cookieStore
+      .getAll()
+      .map((c) => `${c.name}=${c.value}`)
+      .join("; ");
 
-      return await res.json();
-    } catch (error) {
-      console.error("Items fetch error:", error);
-      return [];
+    const res = await fetch(`${API_URL}/api/cart`, {
+      headers: {
+        Cookie: cookieHeader,
+      },
+      credentials: "include",
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch Items");
     }
-  },
 
-
+    return await res.json();
+  } catch (error) {
+    console.error("Items fetch error:", error);
+    return [];
+  }
+  }
 };
 
 
