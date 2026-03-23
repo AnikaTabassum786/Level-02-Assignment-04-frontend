@@ -46,8 +46,6 @@ export default async function MedicineDetailsPage({params,}: {params: Promise<{ 
           <p className="text-md">
             Stock: <span className="font-medium">{medicine.stock}</span>
           </p>
-           {/* <Button className="w-1/3">Add to Cart</Button> */}
-
            <AddToCartFromClient medicineId={medicine.id}/>
         </div>
       </div>
