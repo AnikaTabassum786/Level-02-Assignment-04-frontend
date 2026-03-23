@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/sheet";
 import Link from "next/link";
 import { ModeToggle } from "./MoodToggle";
+import { useCart } from "@/providers/CartProvider";
 
 interface MenuItem {
   title: string;
@@ -46,7 +47,7 @@ interface Navbar1Props {
     title: string;
     className?: string;
   };
-  menu?: MenuItem[];
+  // menu?: MenuItem[];
   auth?: {
     login: {
       title: string;
@@ -60,35 +61,32 @@ interface Navbar1Props {
 }
 
 const Navbar = ({
+  
   logo = {
     url: "https://www.shadcnblocks.com",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
     alt: "logo",
     title: "Shadcnblocks.com",
   },
-  menu = [
-    { title: "Home", url: "/" },
-  
-    {
-      title: "Contact",
-      url: "/contact",
 
-    },
-    {
-      title: "Dashboard",
-      url: "/dashboard",
-    },
-    {
-      title: "Cart",
-      url: "/cart",
-    }
-  ],
   auth = {
     login: { title: "Login", url: "/login" },
     signup: { title: "Sign up", url: "/signup" },
   },
+
   className,
 }: Navbar1Props) => {
+
+  const { count } = useCart();
+
+  
+  const menu: MenuItem[] = [
+    { title: "Home", url: "/" },
+    { title: "Contact", url: "/contact" },
+    { title: "Dashboard", url: "/dashboard" },
+    { title: `Cart (${count})`, url: "/cart" },
+  ];
+  
   return (
     <section className={cn("py-4", className)}>
       <div className="container mx-auto px-4">
@@ -205,7 +203,6 @@ const renderMobileMenuItem = (item: MenuItem) => {
     </Link>
   );
 };
-
 
 
 export { Navbar };
