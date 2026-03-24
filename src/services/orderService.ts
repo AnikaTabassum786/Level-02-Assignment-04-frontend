@@ -42,20 +42,5 @@ export const orderService = {
       },
 
 
-  getOwnOrders: async () => {
-    try {
-      const res = await fetch(`${API_URL}/api/orders`, {
-        cache: "no-store",
-      });
 
-      if (!res.ok) {
-        throw new Error("Failed to fetch order");
-      }
-
-      return await res.json();
-    } catch (error) {
-      console.error("Order fetch error:", error);
-      return [];
-    }
-  },
 };

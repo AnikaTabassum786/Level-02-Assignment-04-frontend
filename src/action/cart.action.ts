@@ -12,3 +12,4 @@ export const deleteCart = async (id: string) => {
   const res = await cartService.deleteCartById(id);
   return res;
 };
+

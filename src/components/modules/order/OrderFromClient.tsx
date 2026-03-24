@@ -55,8 +55,8 @@ export default function OrderFromClient({
     alert("Order placed successfully!");
 
 
-    // setCount(0);
-    // router.push("/orders");
+    setCount(0);
+    router.push("/");
   };
 
 

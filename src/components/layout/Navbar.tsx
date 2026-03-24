@@ -85,6 +85,7 @@ const Navbar = ({
     { title: "Contact", url: "/contact" },
     { title: "Dashboard", url: "/dashboard" },
     { title: `Cart (${count})`, url: "/cart" },
+    { title: "All Order", url: "/all-order" },
   ];
   
   return (
