@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { deleteCart } from "@/action/cart.action";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface Props {
   cartId: string;
@@ -27,8 +28,14 @@ export default function CartFromClient({ cartId }: Props) {
   };
 
   return (
-    <Button onClick={handleDelete} disabled={loading}>
+   <>
+    <div>
+      <Button onClick={handleDelete} disabled={loading}>
       {loading ? "Deleting..." : "Delete"}
     </Button>
+    </div>
+
+   
+   </>
   );
 }

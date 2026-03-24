@@ -15,7 +15,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   const increment = () => setCount((prev) => prev + 1);
 
-  // 🔥 Sync with backend on reload
+
   useEffect(() => {
     const loadCart = async () => {
       try {

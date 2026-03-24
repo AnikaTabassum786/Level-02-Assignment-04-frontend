@@ -1,6 +1,8 @@
 
 import { cartService } from "@/services/cartService";
 import CartFromClient from "./CartFromClient";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default async function CartFromServer() {
   const res = await cartService.getAllOwnCartItems();
@@ -36,7 +38,8 @@ export default async function CartFromServer() {
         })
       )}
 
-      <p className="mt-4 font-bold">Total: {totalPrice}</p>
+      <p className="mt-4 font-bold flex justify-end">Total: {totalPrice}</p>
+      <Link className="mt-4 font-bold flex justify-end" href={'/order'}><Button>Checkout</Button></Link> 
     </div>
   );
 }
