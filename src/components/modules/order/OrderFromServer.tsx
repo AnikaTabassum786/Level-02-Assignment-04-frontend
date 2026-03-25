@@ -1,13 +1,27 @@
-import { cartService } from "@/services/cartService";
+
+
+// export default function AllOrderFromServer(){
+
+//   return (
+//    <>
+//    All Order From Client
+//    </>
+//   );
+// }
+
+
+
 import OrderFromClient from "./OrderFromClient";
+import { orderService } from "@/services/orderService";
+
 
 export default async function OrderFromServer() {
-  const res = await cartService.getAllOwnCartItems();
+  const res = await orderService.getOwnOrders()
+  // const res = await allOrderService.getOrderById();
 
-  const items = res?.data?.items || [];
-  const totalPrice = res?.data?.totalPrice || 0;
+  console.log(res)
 
-  return (
-    <OrderFromClient items={items} totalPrice={totalPrice} />
-  );
+  const orders = res?.data?.result || [];
+  console.log("Orders",orders)
+  return <OrderFromClient orders={orders} />;
 }

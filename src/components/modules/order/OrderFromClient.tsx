@@ -1,92 +1,68 @@
 // "use client";
 
-// export default function OrderFromClient(){
+// export default function AllOrderFromClient(){
 
 
 //   return (
 //    <>
-//    OrderFromClient
+//    All Order From Client
 //    </>
 //   );
 // }
 
 "use client";
 
-import { createOrder } from "@/action/order.action";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useCart } from "@/providers/CartProvider";
+type OrderItem = {
+  id: string;
+  quantity: number;
+  price: string;
+  medicine: {
+    name: string;
+  };
+};
+
+type Order = {
+  id: string;
+  totalAmount: number;
+  status: string;
+  shippingAddress: string;
+  orderItems: OrderItem[];
+};
 
 export default function OrderFromClient({
-  items,
-  totalPrice,
+  orders,
 }: {
-  items: any[];
-  totalPrice: number;
+  orders: Order[];
 }) {
-  const [address, setAddress] = useState("");
-  const router = useRouter();
-  const { setCount } = useCart();
-
-  const handleOrder = async () => {
-    if (!address) {
-      alert("Please enter shipping address");
-      return;
-    }
-
-    const orderItems = items.map((item) => ({
-      medicineId: item.medicineId,
-      quantity: item.quantity,
-    }));
-
-    const res = await createOrder({
-      shippingAddress: address,
-      items: orderItems,
-    });
-
-    console.log(res)
-
-    if (res?.error) {
-      alert("Order failed");
-      return;
-    }
-
-    alert("Order placed successfully!");
-
-
-    setCount(0);
-    router.push("/");
-  };
-
-
+  if (!orders.length) {
+    return <p>No orders found</p>;
+  }
 
   return (
-    <div className="p-4">
-      <h1 className="text-xl font-bold mb-4">Checkout</h1>
+    <div className="p-4 space-y-4">
+      {orders.map((order) => (
+        <div
+          key={order.id}
+          className="border rounded-xl p-4 shadow-sm"
+        >
+          <p><strong>Order ID:</strong> {order.id}</p>
+          <p><strong>Status:</strong> {order.status}</p>
+          <p><strong>Total:</strong> ৳{order.totalAmount}</p>
+          <p><strong>Address:</strong> {order.shippingAddress}</p>
+          <p className="hover:underline"><strong>View Details</strong></p>
 
-      {/* Address Input */}
-      <input
-        type="text"
-        placeholder="Enter shipping address"
-        className="border p-2 w-full mb-4"
-        value={address}
-        onChange={(e) => setAddress(e.target.value)}
-      />
-
-      {/* Items */}
-      {items.map((item) => (
-        <div key={item.id} className="border p-2 mb-2">
-          <p>{item.medicine.name}</p>
-          <p>Qty: {item.quantity}</p>
+          {/* <div className="mt-3">
+            <p className="font-semibold">Items:</p>
+            {order.orderItems?.map((item) => (
+              <div key={item.id} className="ml-3">
+                <p>
+                  {item.medicine?.name} × {item.quantity} (৳{item.price})
+                </p>
+              </div>
+            ))}
+          </div> */}
         </div>
       ))}
-
-      <p className="font-bold mt-3">Total: {totalPrice}</p>
-
-      <Button onClick={handleOrder} className="mt-4">
-        Confirm Order
-      </Button>
     </div>
   );
 }

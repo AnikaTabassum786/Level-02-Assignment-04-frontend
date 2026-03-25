@@ -39,7 +39,7 @@ export default async function CartFromServer() {
       )}
 
       <p className="mt-4 font-bold flex justify-end">Total: {totalPrice}</p>
-      <Link className="mt-4 font-bold flex justify-end" href={'/order'}><Button>Checkout</Button></Link> 
+      <Link className="mt-4 font-bold flex justify-end" href={'/checkout'}><Button>Checkout</Button></Link> 
     </div>
   );
 }
