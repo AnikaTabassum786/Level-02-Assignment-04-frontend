@@ -1,16 +1,6 @@
-// "use client";
-
-// export default function AllOrderFromClient(){
-
-
-//   return (
-//    <>
-//    All Order From Client
-//    </>
-//   );
-// }
-
 "use client";
+
+import Link from "next/link";
 
 type OrderItem = {
   id: string;
@@ -49,18 +39,8 @@ export default function OrderFromClient({
           <p><strong>Status:</strong> {order.status}</p>
           <p><strong>Total:</strong> ৳{order.totalAmount}</p>
           <p><strong>Address:</strong> {order.shippingAddress}</p>
-          <p className="hover:underline"><strong>View Details</strong></p>
+          <Link href={`/orders/${order.id}`}>  <p className="hover:underline"><strong>View Details</strong></p></Link>
 
-          {/* <div className="mt-3">
-            <p className="font-semibold">Items:</p>
-            {order.orderItems?.map((item) => (
-              <div key={item.id} className="ml-3">
-                <p>
-                  {item.medicine?.name} × {item.quantity} (৳{item.price})
-                </p>
-              </div>
-            ))}
-          </div> */}
         </div>
       ))}
     </div>

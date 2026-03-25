@@ -1,5 +1,4 @@
-import OrderFromServer from "@/components/modules/order/OrderFromServer";
-
+import OrderFromServer from "@/components/modules/orders/OrderFromServer";
 
 export default function  AllOrderPage(){
 

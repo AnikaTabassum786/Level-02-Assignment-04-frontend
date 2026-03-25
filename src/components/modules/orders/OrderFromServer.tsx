@@ -1,18 +1,7 @@
 
 
-// export default function AllOrderFromServer(){
-
-//   return (
-//    <>
-//    All Order From Client
-//    </>
-//   );
-// }
-
-
-
-import OrderFromClient from "./OrderFromClient";
 import { orderService } from "@/services/orderService";
+import OrderFromClient from "./OrderFromClient";
 
 
 export default async function OrderFromServer() {
