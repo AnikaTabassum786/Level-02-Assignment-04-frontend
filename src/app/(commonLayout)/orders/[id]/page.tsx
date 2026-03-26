@@ -1,5 +1,3 @@
-// src/app/(commonLayout)/order/[id]/page.tsx
-
 import OrderDetailsFromServer from "@/components/modules/orders/OrderDetailsFromServer";
 
 export default async function Page({
