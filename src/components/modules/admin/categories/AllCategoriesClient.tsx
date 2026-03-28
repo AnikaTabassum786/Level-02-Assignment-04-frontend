@@ -27,8 +27,7 @@ export default function AllCategoriesClient({
         } else {
           toast.error(res.message);
         }
-      }
-    ;
+      };
 
   return (
     <div>
