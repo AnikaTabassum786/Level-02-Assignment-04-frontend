@@ -62,15 +62,38 @@ getCategories: async () => {
                         return {data:null,error}
                      }
                      return {data:data,error:null}
-    
-    
-                     
+                       
             }
             catch(err){
               console.log(error)
               return{data:null,error:{message:"Something Went Wrong"}}
             }
       },
+
+ deleteCategoryById: async (categoryId: string) => {
+  try {
+    const cookieStore = await cookies();
+
+    const res = await fetch(`${API_URL}/api/categories/${categoryId}`, {
+      method: "DELETE",
+      headers: {
+        Cookie: cookieStore.toString(),
+      },
+      credentials: "include",
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      return { success: false, message: data?.message };
+    }
+
+    return { success: true, message: data?.message };
+  } catch (err: any) {
+    console.error(err);
+    return { success: false, message: "Delete failed" };
+  }
+  },
 
 };
 
