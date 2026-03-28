@@ -52,7 +52,7 @@
 //       <div className="flex h-full items-center justify-center">
 //         {/* Logo */}
 //         <div className="flex flex-col items-center gap-6 lg:justify-start">
-          
+
 //           <div className="flex w-full max-w-sm min-w-sm flex-col items-center gap-y-4 rounded-md border border-muted bg-background px-6 py-8 shadow-md">
 //             {heading && <h1 className="text-xl font-semibold">{heading}</h1>}
 //             <Input
@@ -138,29 +138,35 @@ const Login = ({
 
     onSubmit: async ({ value }) => {
 
-  const toastId = toast.loading("Login user...");
+      const toastId = toast.loading("Login user...");
 
-  try {
-    const data = await authClient.signIn.email({
-     
-      email: value.email,
-      password: value.password,
-      callbackURL: "http://localhost:3000",
-    });
+      try {
+        const data = await authClient.signIn.email({
 
-    console.log("Signup result:", data);
+          email: value.email,
+          password: value.password,
+          callbackURL: "http://localhost:3000",
+        });
 
-    if (data) {
-      toast.success("User Login Successfully", { id: toastId });
-     
-    } else {
-      toast.error("Login failed", { id: toastId });
+        console.log("Signup result:", data);
+
+        // if (data) {
+        //   toast.success("User Login Successfully", { id: toastId });
+
+        // } else {
+        //   toast.error("Login failed", { id: toastId });
+        // }
+
+        if (data?.error) {
+          toast.error(data.error.message || "Login failed", { id: toastId });
+        } else {
+          toast.success("User Login Successfully", { id: toastId });
+        }
+
+      } catch (error) {
+        toast.error("Something went wrong", { id: toastId });
+      }
     }
-
-  } catch (error) {
-    toast.error("Something went wrong", { id: toastId });
-  }
-}
   })
 
   const handleGoogleLogin = async () => {

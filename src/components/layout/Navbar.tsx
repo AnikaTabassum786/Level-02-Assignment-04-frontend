@@ -29,6 +29,8 @@ import {
 import Link from "next/link";
 import { ModeToggle } from "./MoodToggle";
 import { useCart } from "@/providers/CartProvider";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "sonner";
 
 interface MenuItem {
   title: string;
@@ -61,7 +63,7 @@ interface Navbar1Props {
 }
 
 const Navbar = ({
-  
+
   logo = {
     url: "https://www.shadcnblocks.com",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
@@ -79,7 +81,7 @@ const Navbar = ({
 
   const { count } = useCart();
 
-  
+
   const menu: MenuItem[] = [
     { title: "Home", url: "/" },
     { title: "Contact", url: "/contact" },
@@ -87,7 +89,19 @@ const Navbar = ({
     { title: `Cart (${count})`, url: "/cart" },
     { title: "Order", url: "/orders" },
   ];
-  
+
+  const { data: session } = authClient.useSession();
+
+  const handleLogout = async () => {
+    try {
+      await authClient.signOut();
+      window.location.href = "/login";
+      toast.success("Logout Successfully")
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  }
+
   return (
     <section className={cn("py-4", className)}>
       <div className="container mx-auto px-4">
@@ -115,12 +129,35 @@ const Navbar = ({
           </div>
           <div className="flex gap-2">
             <ModeToggle></ModeToggle>
-            <Button asChild variant="outline" size="sm">
+            {/* <Button asChild variant="outline" size="sm">
               <a href={auth.login.url}>{auth.login.title}</a>
             </Button>
             <Button asChild size="sm">
               <a href={auth.signup.url}>{auth.signup.title}</a>
             </Button>
+            <Button >
+               SignOut
+            </Button> */}
+
+            {session ? (
+              
+              <div className="flex gap-2 items-center">
+              <Button onClick={handleLogout}>
+                Sign Out
+              </Button>
+              <p>{session.user.email}</p>
+              </div>
+            ) : (
+              <>
+                <Button asChild variant="outline" size="sm">
+                  <a href={auth.login.url}>{auth.login.title}</a>
+                </Button>
+
+                <Button asChild size="sm">
+                  <a href={auth.signup.url}>{auth.signup.title}</a>
+                </Button>
+              </>
+            )}
           </div>
         </nav>
 
@@ -164,7 +201,7 @@ const Navbar = ({
 
                   <div className="flex flex-col gap-3">
                     <ModeToggle></ModeToggle>
-                   
+
                     <Button asChild variant="outline">
                       <a href={auth.login.url}>{auth.login.title}</a>
                     </Button>
@@ -187,10 +224,10 @@ const renderMenuItem = (item: MenuItem) => {
   return (
     <NavigationMenuItem key={item.title}>
       <NavigationMenuLink
-       asChild
+        asChild
         className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-accent-foreground"
       >
-     <Link href={item.url}>{item.title}</Link>
+        <Link href={item.url}>{item.title}</Link>
       </NavigationMenuLink>
     </NavigationMenuItem>
   );
