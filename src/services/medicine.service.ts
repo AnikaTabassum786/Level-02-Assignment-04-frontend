@@ -36,26 +36,27 @@ export const medicineService = {
     }
   },
    
-  getMedicineById: async (id: string) => {
-    try {
-      const res = await fetch(`${API_URL}/api/medicines/${id}`, {
-        cache: "no-store",
-      });
+   getMedicineById: async (medicineId: string) => {
+  try {
+    const res = await fetch(`${API_URL}/api/medicines/${medicineId}`, {
+      cache: "no-store",
+    });
 
-      if (!res.ok) {
-        throw new Error("Failed to fetch medicine");
+   
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch medicines");
       }
 
       return await res.json();
-    } catch (error) {
-      console.error("Single medicine fetch error:", error);
-      return null;
-    }
-  },
 
- 
+  } catch (error) {
+    console.error("Single medicine fetch error:", error);
+    return null;
+  }
+},
 
-   createMedicine:async(medicineData:MedicineData)=>{
+  createMedicine:async(medicineData:MedicineData)=>{
       try{
             const cookieStore = await cookies()
             console.log(cookieStore)
@@ -110,6 +111,32 @@ export const medicineService = {
   }
   },
 
+  updateMedicine: async (medicineId: string, updateData: any) => {
+  try {
+    const cookieStore = await cookies();
+
+    const res = await fetch(`${API_URL}/api/seller/medicines/${medicineId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: cookieStore.toString(),
+      },
+      credentials: "include",
+      body: JSON.stringify(updateData),
+    });
+
+    const responseData = await res.json();
+
+    if (!res.ok) {
+      return { success: false, message: responseData?.message };
+    }
+
+    return { success: true, message: responseData?.message };
+  } catch (err: any) {
+    console.error(err);
+    return { success: false, message: "Update failed" };
+  }
+}
 
 };
 

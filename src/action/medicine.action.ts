@@ -13,3 +13,8 @@ export const deleteMedicine = async (id: string) => {
   const res = await medicineService.deleteMedicineById(id);
   return res;
 };
+
+export const updateMedicine = async (id: string, updateData: any) => {
+  const res = await medicineService.updateMedicine(id, updateData);
+  return res
+};

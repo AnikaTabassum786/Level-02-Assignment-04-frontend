@@ -1,6 +1,6 @@
 "use client";
 
-import { deleteCategory } from "@/action/category";
+import { deleteCategory } from "@/action/category.action";
 import { useState } from "react";
 import { toast } from "sonner";
 

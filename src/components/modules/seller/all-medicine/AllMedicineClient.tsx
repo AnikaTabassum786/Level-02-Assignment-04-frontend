@@ -1,88 +1,3 @@
-// 'use client'
-
-// import { medicineService } from "@/services/medicine.service"
-
-// import {
-//     Table,
-//     TableBody,
-//     TableCaption,
-//     TableCell,
-//     TableFooter,
-//     TableHead,
-//     TableHeader,
-//     TableRow,
-// } from "@/components/ui/table"
-// import { Button } from "@/components/ui/button"
-
-
-
-// export default async function AllMedicineClient() {
-
-//     const medicines = await medicineService.getMedicines()
-//     console.log(medicines)
-
-//     //  const router = useRouter();
-
-//   const handleDelete = async (id: string) => {
-//     const confirmDelete = confirm("Are you sure?");
-//     if (!confirmDelete) return;
-
-//     const res = await medicineService.deleteMedicineById(id);
-
-//     if (res.success) {
-//       alert("Deleted successfully");
-//     //   router.refresh(); // 🔥 re-fetch server data
-//     } else {
-//       alert(res.message);
-//     }
-//   };
-
-//     return (
-//         <>
-//             <div>
-//                 <Table>
-//                     <TableHeader>
-//                         <TableRow>
-//                             <TableHead >Medicine Name</TableHead>
-//                             <TableHead>Manufacturer</TableHead>
-//                             <TableHead>Stock</TableHead>
-//                             <TableHead>Price</TableHead>
-//                             <TableHead className="flex  items-center">Action</TableHead>
-//                         </TableRow>
-//                     </TableHeader>
-//                     <TableBody>
-//                         {medicines?.data?.data?.length === 0 ? (
-//                             <TableRow>
-//                                 <TableCell colSpan={5} className="text-center">
-//                                     No medicines found
-//                                 </TableCell>
-//                             </TableRow>
-//                         ) : (
-//                             medicines?.data?.data?.map((medicine: any) => (
-//                                 <TableRow key={medicine.id}>
-//                                     <TableCell className="font-medium">{medicine.name}</TableCell>
-//                                     <TableCell>{medicine.manufacturer}</TableCell>
-//                                     <TableCell>{medicine.stock}</TableCell>
-//                                     <TableCell>{medicine.price}</TableCell>
-//                                     <TableCell className="flex gap-2">
-//                                         <div><Button>Edit</Button></div>
-                                         
-//                                         <div><Button
-//                                         onClick={() => handleDelete(medicine.id)}
-//                                         >Delete</Button></div>
-//                                     </TableCell>
-//                                 </TableRow>
-//                             ))
-//                         )}
-//                     </TableBody>
-//                 </Table>
-//             </div>
-//         </>
-//     )
-// }
-
-
-
 'use client'
 
 import { deleteMedicine } from "@/action/medicine.action";
@@ -96,6 +11,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+
 
 
 interface Medicine {
@@ -112,6 +29,11 @@ interface AllMedicineClientProps {
 
 export default function AllMedicineClient({ initialData }: AllMedicineClientProps) {
   const [medicines, setMedicines] = useState(initialData);
+  const router = useRouter();
+
+  const handleEdit = (id: string) => {
+  router.push(`/seller-dashboard/all-medicine/${id}`);
+};
 
   const handleDelete = async (id: string) => {
     const confirmDelete = confirm("Are you sure?");
@@ -154,7 +76,7 @@ export default function AllMedicineClient({ initialData }: AllMedicineClientProp
                 <TableCell>{medicine.stock}</TableCell>
                 <TableCell>{medicine.price}</TableCell>
                 <TableCell className="flex gap-2">
-                  <Button>Edit</Button>
+                  <Button onClick={() => handleEdit(medicine.id)}>Edit</Button>
                   <Button onClick={() => handleDelete(medicine.id)}>Delete</Button>
                 </TableCell>
               </TableRow>

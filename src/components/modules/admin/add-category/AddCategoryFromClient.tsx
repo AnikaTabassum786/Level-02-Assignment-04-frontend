@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 
-import { createCategory } from "@/action/category";
+import { createCategory } from "@/action/category.action";
 
 const categorySchema = z.object({
   name: z.string().min(1, "Category Name is required"),
