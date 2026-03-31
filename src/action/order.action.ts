@@ -9,3 +9,7 @@ export const createOrder = async (data: orderData) => {
   return res;
 };
 
+export const updateOrder = async (id: string, updateData: any) => {
+  const res = await orderService.updateOrderStatus(id, updateData);
+  return res
+};

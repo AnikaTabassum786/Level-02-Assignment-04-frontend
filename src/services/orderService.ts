@@ -152,8 +152,34 @@ getOrderById: async (id: string) => {
     }
   },
 
+  
+ //Seller
 
-
-
+    updateOrderStatus: async (orderId: string, updateData: any) => {
+    try {
+      const cookieStore = await cookies();
+  
+      const res = await fetch(`${API_URL}/api/seller/orders/${orderId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: cookieStore.toString(),
+        },
+        credentials: "include",
+        body: JSON.stringify(updateData),
+      });
+  
+      const responseData = await res.json();
+  
+      if (!res.ok) {
+        return { success: false, message: responseData?.message };
+      }
+  
+      return { success: true, message: responseData?.message };
+    } catch (err: any) {
+      console.error(err);
+      return { success: false, message: "Update failed" };
+    }
+  }
 
 };
