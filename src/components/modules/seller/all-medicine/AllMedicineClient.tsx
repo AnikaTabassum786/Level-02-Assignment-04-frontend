@@ -82,6 +82,27 @@ export default function AllMedicineClient({ initialData }: AllMedicineClientProp
               </TableRow>
             ))
           )}
+        </TableBody> <TableBody>
+          {medicines.length === 0 ? (
+            <TableRow>
+              <TableCell colSpan={5} className="text-center">
+                No medicines found
+              </TableCell>
+            </TableRow>
+          ) : (
+            medicines.map((medicine) => (
+              <TableRow key={medicine.id}>
+                <TableCell>{medicine.name}</TableCell>
+                <TableCell>{medicine.manufacturer}</TableCell>
+                <TableCell>{medicine.stock}</TableCell>
+                <TableCell>{medicine.price}</TableCell>
+                <TableCell className="flex gap-2">
+                  <Button onClick={() => handleEdit(medicine.id)}>Edit</Button>
+                  <Button onClick={() => handleDelete(medicine.id)}>Delete</Button>
+                </TableCell>
+              </TableRow>
+            ))
+          )}
         </TableBody>
       </Table>
     </div>

@@ -11,6 +11,10 @@ export const sellerRoute:Route[]= [
         {
           title: "Add Medicine",
           url: "/seller-dashboard/add-medicine",
+        },
+        {
+          title: "All Orders",
+          url: "/seller-dashboard/all-orders",
         }
       ],
     }
