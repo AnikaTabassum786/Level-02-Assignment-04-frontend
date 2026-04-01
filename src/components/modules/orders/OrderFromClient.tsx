@@ -1,6 +1,9 @@
 "use client";
 
+
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type OrderItem = {
   id: string;
@@ -20,13 +23,13 @@ type Order = {
 };
 
 export default function OrderFromClient({
-  orders,
+ orders,
 }: {
   orders: Order[];
 }) {
-  if (!orders.length) {
-    return <p>No orders found</p>;
-  }
+ 
+
+
 
   return (
     <div className="p-4 space-y-4">
@@ -40,6 +43,7 @@ export default function OrderFromClient({
           <p><strong>Total:</strong> ৳{order.totalAmount}</p>
           <p><strong>Address:</strong> {order.shippingAddress}</p>
           <Link href={`/orders/${order.id}`}>  <p className="hover:underline"><strong>View Details</strong></p></Link>
+          
 
         </div>
       ))}

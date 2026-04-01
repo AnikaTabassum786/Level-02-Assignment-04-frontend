@@ -1,14 +1,4 @@
-// "use client";
 
-// export default function OrderFromClient(){
-
-
-//   return (
-//    <>
-//    OrderFromClient
-//    </>
-//   );
-// }
 
 "use client";
 
