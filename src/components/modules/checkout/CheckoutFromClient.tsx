@@ -45,7 +45,7 @@ export default function CheckoutFromClient({
       items: orderItems,
     });
 
-    console.log(res)
+    // console.log("Created order",res)
 
     if (res?.error) {
       alert("Order failed");

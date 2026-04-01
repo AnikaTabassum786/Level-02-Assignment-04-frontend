@@ -13,7 +13,7 @@ export const sellerRoute:Route[]= [
           url: "/seller-dashboard/add-medicine",
         },
         {
-          title: "All Orders",
+          title: "Incoming Orders",
           url: "/seller-dashboard/all-orders",
         }
       ],

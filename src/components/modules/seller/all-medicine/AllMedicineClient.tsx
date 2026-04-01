@@ -82,7 +82,8 @@ export default function AllMedicineClient({ initialData }: AllMedicineClientProp
               </TableRow>
             ))
           )}
-        </TableBody> <TableBody>
+        </TableBody>
+         {/* <TableBody>
           {medicines.length === 0 ? (
             <TableRow>
               <TableCell colSpan={5} className="text-center">
@@ -103,7 +104,7 @@ export default function AllMedicineClient({ initialData }: AllMedicineClientProp
               </TableRow>
             ))
           )}
-        </TableBody>
+        </TableBody> */}
       </Table>
     </div>
   );
