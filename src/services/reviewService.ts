@@ -46,6 +46,24 @@ createReview:async(reviewData:ReviewData)=>{
         }
   },
 
+  
+  getReviews: async () => {
+    try {
+      const res = await fetch(`${API_URL}/api/review`, {
+        cache: "no-store",
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch review");
+      }
+
+      return await res.json();
+    } catch (error) {
+      console.error("Reviews fetch error:", error);
+      return [];
+    }
+  },
+
 
 };
 

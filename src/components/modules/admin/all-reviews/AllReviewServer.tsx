@@ -1,12 +1,13 @@
+import { reviewService } from "@/services/reviewService";
+import AllReviewsClient from "./AllReviewsClient";
 
-export default function AllReviewsServer() {
 
+export default async function AllReviewServer() {
 
-  return (
-    <div>
-      <h1>All Users</h1>
+    const res = await reviewService.getReviews();
+    const reviews = res?.data || [];
 
-     
-    </div>
-  );
+  console.log(reviews)
+
+  return <AllReviewsClient reviews={reviews} />;
 }

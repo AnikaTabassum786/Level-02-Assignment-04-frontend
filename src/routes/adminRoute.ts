@@ -26,8 +26,8 @@ export const adminRoute:Route[]= [
           url: "/admin-dashboard/all-orders",
         },
         {
-          title: "All Review",
-          url: "/admin-dashboard/all-review",
+          title: "All Reviews",
+          url: "/admin-dashboard/all-reviews",
         }
       ],
     }
