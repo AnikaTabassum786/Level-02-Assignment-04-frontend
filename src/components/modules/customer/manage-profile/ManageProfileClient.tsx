@@ -1,9 +1,6 @@
 "use client";
 
-import { banUser } from "@/action/user.action";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
-import { toast } from "sonner";
+
 
 type Customer = {
   id: string;
@@ -26,14 +23,47 @@ export default function ManageProfileClient({
   return (
    <>
    <h1 className="text-xl font-semibold mb-4">My Profile</h1>
+      <div className=" space-y-3">
+  <div>
+    <label className="block text-sm font-medium">Name</label>
+    <input
+      type="text"
+      defaultValue={customer.name}
+      className="w-1/2 border px-3 py-2 rounded"
+    />
+  </div>
 
-      <div className="border p-3 rounded">
-        <p><strong>Name:</strong> {customer.name}</p>
-        <p><strong>Email:</strong> {customer.email}</p>
-        <p><strong>Phone:</strong> {customer.phone}</p>
-        <p><strong>Address:</strong> {customer.address}</p>
-        <p><strong>Role:</strong> {customer.role}</p>
-      </div>
+  <div>
+    <label className="block text-sm font-medium">Email</label>
+    <input
+      type="email"
+      defaultValue={customer.email}
+      className="w-1/2 border px-3 py-2 rounded"
+    />
+  </div>
+
+  <div>
+    <label className="block text-sm font-medium">Phone</label>
+    <input
+      type="text"
+      defaultValue={customer.phone}
+      className="w-1/2 border px-3 py-2 rounded"
+    />
+  </div>
+
+  <div>
+    <label className="block text-sm font-medium">Address</label>
+    <input
+      type="text"
+      defaultValue={customer.address}
+      className="w-1/2 border px-3 py-2 rounded"
+    />
+  </div>
+
+ 
+</div>
+
+
    </>
   );
 }
