@@ -49,6 +49,7 @@ export default async function MedicineDetailsPage({params,}: {params: Promise<{ 
            <AddToCartFromClient medicineId={medicine.id}/>
         </div>
       </div>
+      
     </div>
   );
 }

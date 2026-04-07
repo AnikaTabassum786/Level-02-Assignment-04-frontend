@@ -10,8 +10,10 @@ import {
 import { Medicine } from "@/types"
 import Link from "next/link"
 
+
 export function MedicineCard({ medicine }: { medicine: Medicine }) {
   return (
+    <>
     <Card className="w-full max-w-sm flex flex-col overflow-hidden hover:shadow-xl transition">
 
       {/* Medicine Image */}
@@ -66,5 +68,6 @@ export function MedicineCard({ medicine }: { medicine: Medicine }) {
       </CardFooter> */}
 
     </Card>
+    </>
   )
 }
