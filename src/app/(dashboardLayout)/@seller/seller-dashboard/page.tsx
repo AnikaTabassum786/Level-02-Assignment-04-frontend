@@ -1,7 +1,7 @@
+
+
+import { redirect } from "next/navigation";
+
 export default function SellerDashboard(){
-    return(
-        <div>
-            Seller Dashboard
-        </div>
-    )
+     return redirect("/seller-dashboard/all-medicine");
 }

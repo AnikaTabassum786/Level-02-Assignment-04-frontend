@@ -60,7 +60,10 @@ export default function AllOrdersClient({ initialData }: AllOrderClientProps) {
   };
 
   return (
-    <div>
+    <>
+    
+      <p className="flex justify-center sm:p-4 md:p-4 lg:p-6 text-lg md:text-xl lg:text-3xl">Incoming Orders</p>
+      <div className="pb-4">
       <Table>
         <TableHeader>
           <TableRow>
@@ -112,6 +115,8 @@ export default function AllOrdersClient({ initialData }: AllOrderClientProps) {
           )}
         </TableBody>
       </Table>
-    </div>
+      </div>
+    
+    </>
   );
 }

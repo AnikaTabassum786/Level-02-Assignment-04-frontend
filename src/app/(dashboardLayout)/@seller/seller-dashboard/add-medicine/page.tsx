@@ -11,7 +11,7 @@ export default async function AddMedicinePage(){
 
   return(
     <>
-       Add Medicine Page
+       
          {/* <AddMedicineFormServer></AddMedicineFormServer> */}
          <AddMedicineFormClient categories={categories}/>
  </>

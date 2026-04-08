@@ -103,17 +103,16 @@ export default function AddMedicineFormClient({
         console.error("Create medicine error:", err)
         toast.error(err)
       }
-
-
     }
   })
 
 
 
   return (
-    <div>
+   <>
+   <p className="flex justify-center sm:p-4 md:p-4 lg:p-6 text-lg md:text-xl lg:text-3xl">Add Medicine</p>
+    <div className="flex justify-center py-2">
       <Card className="w-full max-w-2xl">
-
         <CardContent>
           <form
             id="medicine-post"
@@ -138,7 +137,7 @@ export default function AddMedicineFormClient({
                         onChange={(e) =>
                           field.handleChange(e.target.value)
                         }
-                        placeholder=""
+                        placeholder="Medicine name"
                       />
                       {isInvalid && (
                         <FieldError errors={field.state.meta.errors} />
@@ -163,7 +162,7 @@ export default function AddMedicineFormClient({
                         onChange={(e) =>
                           field.handleChange(e.target.value)
                         }
-                        placeholder="Price"
+                        placeholder="200"
                       />
                       {isInvalid && (
                         <FieldError errors={field.state.meta.errors} />
@@ -188,7 +187,7 @@ export default function AddMedicineFormClient({
                         onChange={(e) =>
                           field.handleChange(e.target.value)
                         }
-
+ placeholder="20"
                       />
                       {isInvalid && (
                         <FieldError errors={field.state.meta.errors} />
@@ -213,7 +212,7 @@ export default function AddMedicineFormClient({
                         onChange={(e) =>
                           field.handleChange(e.target.value)
                         }
-
+ placeholder="Opsonin"
                       />
                       {isInvalid && (
                         <FieldError errors={field.state.meta.errors} />
@@ -270,7 +269,7 @@ export default function AddMedicineFormClient({
                         onChange={(e) =>
                           field.handleChange(e.target.value)
                         }
-                        placeholder="Write your blog"
+                        placeholder="Say something about medicine"
                       />
                       {isInvalid && (
                         <FieldError errors={field.state.meta.errors} />
@@ -287,11 +286,12 @@ export default function AddMedicineFormClient({
         </CardContent>
 
         <CardFooter className="flex flex-col">
-          <Button form="medicine-post" type="submit" className="w-full">
+          <Button form="medicine-post" type="submit" className="w-full cursor-pointer">
             Submit
           </Button>
         </CardFooter>
       </Card>
     </div>
+   </>
   )
 }

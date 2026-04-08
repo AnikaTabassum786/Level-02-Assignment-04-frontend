@@ -36,6 +36,28 @@ export const medicineService = {
     }
   },
    
+//   getMedicines: async (params?: { page?: number; limit?: number }) => {
+//   try {
+//     const query = new URLSearchParams();
+
+//     if (params?.page) query.set("page", params.page.toString());
+//     if (params?.limit) query.set("limit", params.limit.toString());
+
+//     const res = await fetch(`${API_URL}/api/medicines?${query.toString()}`, {
+//       cache: "no-store",
+//     });
+
+//     if (!res.ok) {
+//       throw new Error("Failed to fetch medicines");
+//     }
+
+//     return await res.json();
+//   } catch (error) {
+//     console.error("Medicine fetch error:", error);
+//     return [];
+//   }
+// },
+
    getMedicineById: async (medicineId: string) => {
   try {
     const res = await fetch(`${API_URL}/api/medicines/${medicineId}`, {

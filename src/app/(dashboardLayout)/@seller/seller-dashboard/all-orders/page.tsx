@@ -5,7 +5,7 @@ export default async function AddOrderPage() {
 
     return (
         <>
-            All Orders Page
+       
             <AllOrdersServer/>
         </>
     )
