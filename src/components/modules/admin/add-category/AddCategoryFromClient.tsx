@@ -60,7 +60,7 @@ export default function AddCategoryFormClient() {
   });
 
   return (
-    <div>
+    <div className="flex justify-center py-8">
       <Card className="w-full max-w-2xl">
         <CardContent>
           <form
@@ -110,7 +110,7 @@ export default function AddCategoryFormClient() {
           <Button
             form="category-post"
             type="submit"
-            className="w-full"
+            className="w-full cursor-pointer"
           >
             Submit
           </Button>
