@@ -3,7 +3,7 @@ import { Route } from "@/types";
 
 export const adminRoute:Route[]= [
     {
-      title: "admin Management",
+      title: "Admin Management",
       items: [
         {
           title: "All Users",

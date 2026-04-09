@@ -5,7 +5,7 @@ export default async function AllOrderPage() {
 
     return (
         <>
-        <p>ALL Orders</p>
+        {/* <p>ALL Orders</p> */}
            <AllOrderServer></AllOrderServer>
         </>
     )

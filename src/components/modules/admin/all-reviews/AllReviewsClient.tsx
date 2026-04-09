@@ -22,7 +22,7 @@ export default function AllReviewsClient({ reviews }: { reviews: Review[] }) {
   return (
     <>
      <div>
-      <h1 className="text-xl font-semibold mb-4">All Reviews</h1>
+      {/* <h1 className="text-xl font-semibold mb-4">All Reviews</h1> */}
 
       <div className="overflow-x-auto">
         <table className="min-w-full border border-gray-200 rounded">
