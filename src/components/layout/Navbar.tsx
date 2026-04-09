@@ -31,6 +31,7 @@ import { ModeToggle } from "./MoodToggle";
 import { useCart } from "@/providers/CartProvider";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
+import { GiMedicines } from "react-icons/gi";
 
 interface MenuItem {
   title: string;
@@ -84,7 +85,7 @@ const Navbar = ({
 
   const menu: MenuItem[] = [
     { title: "Home", url: "/" },
-    { title: "Contact", url: "/contact" },
+    // { title: "Contact", url: "/contact" },
     { title: "Dashboard", url: "/dashboard" },
     { title: `Cart (${count})`, url: "/cart" },
     { title: "Order", url: "/orders" },
@@ -109,16 +110,19 @@ const Navbar = ({
         <nav className="hidden items-center justify-between lg:flex">
           <div className="flex items-center gap-6">
             {/* Logo */}
-            <a href={logo.url} className="flex items-center gap-2">
-              <img
+            {/* <a href={logo.url} className="flex items-center gap-2"> */}
+              {/* <img
                 src={logo.src}
                 className="max-h-8 dark:invert"
                 alt={logo.alt}
-              />
+              /> */}
+
+              <GiMedicines size={32} />
               <span className="text-lg font-semibold tracking-tighter">
-                {logo.title}
+                {/* {logo.title} */}
+                MediNova
               </span>
-            </a>
+            {/* </a> */}
             <div className="flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>
