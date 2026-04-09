@@ -66,9 +66,10 @@ export default function ManageProfileClient({
 
     return (
         <>
-            <h1 className="text-xl font-semibold mb-4">My Profile</h1>
-            <form onSubmit={handleSubmit} className="border p-5 rounded space-y-4 max-w-md">
-                <h2 className="text-lg font-semibold">Update Profile</h2>
+            {/* <h1 className="text-xl font-semibold mb-4">My Profile</h1> */}
+            <div className="flex justify-center items-center">
+            <form onSubmit={handleSubmit} className=" p-5 rounded space-y-4 ">
+                {/* <h2 className="text-lg font-semibold">Update Profile</h2> */}
 
                 <input
                     name="name"
@@ -106,11 +107,12 @@ export default function ManageProfileClient({
                 <Button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-black text-white py-2 rounded hover:opacity-80"
+                    className="w-full bg-black text-white py-2 rounded hover:opacity-80 cursor-pointer"
                 >
                     {loading ? "Updating..." : "Update Profile"}
                 </Button>
             </form>
+            </div>
         </>
     );
 }

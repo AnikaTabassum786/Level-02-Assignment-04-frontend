@@ -1,7 +1,5 @@
+import { redirect } from "next/navigation";
+
 export default function Dashboard(){
-    return(
-        <div>
-            Customer Dashboard
-        </div>
-    )
+    redirect('/dashboard/manage-profile')
 }
