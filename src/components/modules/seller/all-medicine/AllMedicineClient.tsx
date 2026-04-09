@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 
 
@@ -36,16 +37,16 @@ export default function AllMedicineClient({ initialData }: AllMedicineClientProp
 };
 
   const handleDelete = async (id: string) => {
-    const confirmDelete = confirm("Are you sure?");
-    if (!confirmDelete) return;
+    // const confirmDelete = confirm("Are you sure?");
+    // if (!confirmDelete) return;
 
     const res = await deleteMedicine(id);
 
     if (res.success) {
-      alert("Deleted successfully");
+      toast.success("Deleted successfully");
       setMedicines(medicines.filter((m) => m.id !== id));
     } else {
-      alert(res.message);
+      toast.error(res.message);
     }
   };
 
@@ -80,8 +81,8 @@ export default function AllMedicineClient({ initialData }: AllMedicineClientProp
                 <TableCell  className="text-center">{medicine.stock}</TableCell>
                 <TableCell  className="text-center">{medicine.price}</TableCell>
                 <TableCell className="flex gap-2 text-center">
-                  <Button onClick={() => handleEdit(medicine.id)}>Edit</Button>
-                  <Button onClick={() => handleDelete(medicine.id)}>Delete</Button>
+                  <Button className="cursor-pointer" onClick={() => handleEdit(medicine.id)}>Edit</Button>
+                  <Button className="cursor-pointer" onClick={() => handleDelete(medicine.id)}>Delete</Button>
                 </TableCell>
               </TableRow>
             ))
