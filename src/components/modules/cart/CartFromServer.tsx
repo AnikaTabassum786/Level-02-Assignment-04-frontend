@@ -11,10 +11,10 @@ export default async function CartFromServer() {
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-semibold mb-4">My Cart</h2>
+      {/* <h2 className="text-xl font-semibold mb-4">My Cart</h2> */}
 
       {cartItems.length === 0 ? (
-        <p>No items in cart</p>
+        <p className="text-2xl">No items in cart</p>
       ) : (
         cartItems.map((item: any) => {
           const price = Number(item.medicine?.price || 0);
@@ -39,7 +39,7 @@ export default async function CartFromServer() {
       )}
 
       <p className="mt-4 font-bold flex justify-end">Total: {totalPrice}</p>
-      <Link className="mt-4 font-bold flex justify-end" href={'/checkout'}><Button>Checkout</Button></Link> 
+      <Link className="mt-4 font-bold flex justify-end" href={'/checkout'}><Button className="cursor-pointer">Checkout</Button></Link> 
     </div>
   );
 }

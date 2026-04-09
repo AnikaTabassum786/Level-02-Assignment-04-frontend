@@ -97,7 +97,7 @@ export function MedicineCard({ medicine }: { medicine: Medicine }) {
     <Card className="w-full max-w-sm flex flex-col overflow-hidden hover:shadow-xl transition">
 
       {/* Medicine Image */}
-      <div className="relative w-full h-48 bg-gray-100">
+      {/* <div className="relative w-full h-48 bg-gray-100">
         <Image
           src={imageSrc}
           alt={medicine.name}
@@ -105,7 +105,7 @@ export function MedicineCard({ medicine }: { medicine: Medicine }) {
           fill
           className="object-cover"
         />
-      </div>
+      </div> */}
 
       {/* Header */}
       <CardHeader>

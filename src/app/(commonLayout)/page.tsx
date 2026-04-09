@@ -25,7 +25,7 @@ export default async function Home() {
 
   return (
     <>
-    <SearchBy></SearchBy>
+    {/* <SearchBy></SearchBy> */}
     <div className="flex  items-center justify-center bg-zinc-00 font-sans dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-4 gap-6">
         {

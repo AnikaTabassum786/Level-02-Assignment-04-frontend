@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { deleteCart } from "@/action/cart.action";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { toast } from "sonner";
 
 interface Props {
   cartId: string;
@@ -20,17 +21,17 @@ export default function CartFromClient({ cartId }: Props) {
     setLoading(false);
 
     if (res.success) {
-      alert("Item deleted successfully");
+      toast.success("Item deleted successfully");
       router.refresh(); // refresh the server component
     } else {
-      alert("Failed to delete: " + res.message);
+      toast.error("Failed to delete: " + res.message);
     }
   };
 
   return (
    <>
     <div>
-      <Button onClick={handleDelete} disabled={loading}>
+      <Button onClick={handleDelete} disabled={loading} className="cursor-pointer">
       {loading ? "Deleting..." : "Delete"}
     </Button>
     </div>
