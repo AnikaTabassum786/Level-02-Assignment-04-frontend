@@ -23,15 +23,7 @@ export default async function MedicineDetailsPage({params,}: {params: Promise<{ 
     <div className="flex justify-center items-center pt-12">
       <div className="">
 
-        {/* Image */}
-        {/* <div className="relative w-full h-[400px]">
-          <Image
-            src={`http://localhost:5000${medicine.imageURL}`}
-            alt={medicine.name}
-            fill
-            className="object-cover rounded-lg"
-          /> 
-        </div> */}
+       
 
         {/* Details */}
         <div className="space-y-4">

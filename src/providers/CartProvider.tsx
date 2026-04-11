@@ -1,12 +1,17 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
+import { env } from "../../env";
+
+const API_URL = env.API_URL
 
 type CartContextType = {
   count: number;
   setCount: (count: number) => void;
   increment: () => void;
 };
+
+
 
 const CartContext = createContext<CartContextType | null>(null);
 
@@ -19,7 +24,9 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const loadCart = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/cart", {
+
+       
+        const res = await fetch(`${API_URL}/api/cart`, {
           credentials: "include",
         });
         const data = await res.json();
