@@ -52,7 +52,7 @@ const Login = ({
 
           email: value.email,
           password: value.password,
-          callbackURL: FRONTEND_URL,
+        
         });
 
         console.log("Signup result:", data);
@@ -150,14 +150,14 @@ const Login = ({
 
             </form>
 
-            <Button
+            {/* <Button
               onClick={handleGoogleLogin}
               variant="outline"
               className="w-full bg-black text-white"
               type="button"
             >
               Login with Google
-            </Button>
+            </Button> */}
 
           </div>
 

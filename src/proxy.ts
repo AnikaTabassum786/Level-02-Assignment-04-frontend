@@ -12,10 +12,10 @@ export async function proxy(request: NextRequest) {
 
     const pathname = request.nextUrl.pathname;
     const { data } = await userService.getSession()
-
-    if (!data) {
-        return NextResponse.redirect(new URL("/login", request.url))
-    }
+  console.log(data,"from proxy")
+    // if (!data) {
+    //     return NextResponse.redirect(new URL("/login", request.url))
+    // }
 
     const role = data.user.role
 
@@ -41,3 +41,4 @@ export const config = {
     // matcher: ["/dashboard", "/admin-dashboard", "/seller-dashboard"]
     matcher: ["/dashboard/:path*", "/admin-dashboard/:path*", "/seller-dashboard/:path*"]
 }
+

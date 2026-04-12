@@ -18,7 +18,7 @@ export const userService = {
         },
         cache: "no-store",
       });
-
+console.log(AUTH_URL,'AUTH_URL')
       const session = await res.json();
       console.log("Session:",session)
       if (!session) {
