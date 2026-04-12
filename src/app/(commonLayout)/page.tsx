@@ -18,7 +18,7 @@ export default async function Home() {
   console.log(data)
 
   const medicines = await medicineService.getMedicines();
-  console.log(medicines);
+  console.log("All medicines",medicines);
 
   const pagination = medicines.data?.pagination || {
     limit: 8,

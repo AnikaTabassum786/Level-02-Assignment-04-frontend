@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import AllUsersServer from "@/components/modules/admin/all-users/AllUsersServer";
 
 

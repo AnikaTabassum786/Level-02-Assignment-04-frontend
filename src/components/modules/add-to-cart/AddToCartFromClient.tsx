@@ -63,7 +63,7 @@ export default function AddToCartFromClient({ medicineId }: { medicineId: string
 
   return (
     <form onSubmit={handleSubmit}>
-      <Button type="submit" className="w-full cursor-pointer">
+      <Button type="submit" className="w-1/2 cursor-pointer">
         Add to Cart
       </Button>
     </form>

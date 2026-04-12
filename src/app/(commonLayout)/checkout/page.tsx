@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import CheckoutFromServer from "@/components/modules/checkout/CheckoutFromServer";
 
 

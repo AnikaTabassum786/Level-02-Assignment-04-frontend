@@ -1,3 +1,5 @@
+// export const dynamic = "force-dynamic";
+
 
 import { cartService } from "@/services/cartService";
 import CartFromClient from "./CartFromClient";

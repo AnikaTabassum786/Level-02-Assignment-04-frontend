@@ -74,7 +74,10 @@ export default function EditMedicineClient({
 
   return (
     <div>
-      <Card className="w-full max-w-2xl">
+      <h1 className="flex justify-center items-center pt-6 pb-2 sm:p-4 md:p-4 lg:p-6 text-lg md:text-xl lg:text-3xl">Edit Medicine</h1>
+     
+     <div  className="flex justify-center items-center py-4">
+       <Card className="w-full max-w-2xl ">
         <CardContent>
           <form
             id="medicine-edit"
@@ -210,11 +213,12 @@ export default function EditMedicineClient({
         </CardContent>
 
         <CardFooter>
-          <Button form="medicine-edit" type="submit" className="w-full">
+          <Button form="medicine-edit" type="submit" className="w-full cursor-pointer">
             Update
           </Button>
         </CardFooter>
       </Card>
+     </div>
     </div>
   );
 }

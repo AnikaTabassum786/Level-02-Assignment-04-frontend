@@ -20,11 +20,8 @@ export default async function MedicineDetailsPage({params,}: {params: Promise<{ 
   }
 
   return (
-    <div className="flex justify-center items-center pt-12">
-      <div className="">
-
-       
-
+    <div className="w-full max-w-2xl mx-auto">
+      <div className="flex justify-center items-center pt-12">
         {/* Details */}
         <div className="space-y-4">
           <h1 className="text-3xl font-bold">{medicine.name}</h1>

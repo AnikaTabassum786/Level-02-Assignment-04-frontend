@@ -1,4 +1,4 @@
-
+export const dynamic = "force-dynamic";
 import CartFromServer from "@/components/modules/cart/CartFromServer";
 
 

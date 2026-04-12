@@ -5,6 +5,7 @@ import { RiStarLine, RiStarFill } from "react-icons/ri";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { createReview } from "@/action/review.action";
+import { toast } from "sonner";
 
 export default function AddReviewClient({
   medicineId,
@@ -18,7 +19,7 @@ export default function AddReviewClient({
 
   const handleSubmit = () => {
     if (!rating) {
-      alert("Please select rating");
+      toast.warning("Please select rating");
       return;
     }
 
@@ -30,9 +31,9 @@ export default function AddReviewClient({
       });
 
       if (res?.error) {
-        alert(res.error);
+        toast.error(res.error);
       } else {
-        alert("Review submitted!");
+        toast.success("Review submitted!");
         setRating(0);
         setComment("");
       }
@@ -40,7 +41,7 @@ export default function AddReviewClient({
   };
 
   return (
-    <div className="max-w-md space-y-4">
+    <div className="max-w-md space-y-4 mx-auto">
       <h2 className="text-lg font-semibold">Write a Review</h2>
 
       {/* ⭐ Rating */}
@@ -70,7 +71,7 @@ export default function AddReviewClient({
       />
 
       {/* Submit */}
-      <Button onClick={handleSubmit} disabled={!rating || isPending}>
+      <Button className="cursor-pointer" onClick={handleSubmit} disabled={!rating || isPending}>
         {isPending ? "Submitting..." : "Submit Review"}
       </Button>
     </div>

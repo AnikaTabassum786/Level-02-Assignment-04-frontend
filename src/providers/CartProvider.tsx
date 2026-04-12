@@ -3,7 +3,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { env } from "../../env";
 
-const API_URL = env.API_URL
+const API_URL = env.NEXT_PUBLIC_API_URL
 
 type CartContextType = {
   count: number;

@@ -12,8 +12,8 @@ import { toast } from "sonner";
 import { env } from "../../../../env"
 
 
-const FRONTEND_URL = env.FRONTEND_URL
-
+// const FRONTEND_URL = env.FRONTEND_URL
+const FRONTEND_URL = env.NEXT_PUBLIC_FRONTEND_URL
 interface Login1Props {
   heading?: string
   buttonText?: string

@@ -17,7 +17,7 @@ export default async function EditMedicineServer({ id }: Props) {
 
   return (
     <div>
-      <h1>Edit Medicine</h1>
+      
       <EditMedicineClient medicine={medicine} />
     </div>
   );

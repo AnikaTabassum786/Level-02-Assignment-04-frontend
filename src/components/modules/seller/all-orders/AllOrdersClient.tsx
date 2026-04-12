@@ -103,7 +103,7 @@ export default function AllOrdersClient({ initialData }: AllOrderClientProps) {
                     <option value="CANCELLED">Cancelled</option>
                   </select>
 
-                  <Button
+                  <Button className="ml-4"
                     onClick={() => handleUpdate(order.id, order.status)}
                     disabled={loadingId === order.id}
                   >

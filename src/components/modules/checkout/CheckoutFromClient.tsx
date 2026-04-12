@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/providers/CartProvider";
+import { toast } from "sonner";
 
 export default function CheckoutFromClient({
   items,
@@ -38,11 +39,11 @@ export default function CheckoutFromClient({
     // console.log("Created order",res)
 
     if (res?.error) {
-      alert("Order failed");
+      toast.error("Order failed");
       return;
     }
 
-    alert("Order placed successfully!");
+    toast.success("Order placed successfully!");
 
 
     setCount(0);
@@ -74,7 +75,7 @@ export default function CheckoutFromClient({
 
       <p className="font-bold mt-3">Total: {totalPrice}</p>
 
-      <Button onClick={handleOrder} className="mt-4">
+      <Button onClick={handleOrder} className="mt-4 cursor-pointer">
         Confirm Order
       </Button>
     </div>

@@ -12,15 +12,25 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
+  /* config options here */
+  
+  // reactCompiler: true,
+
+  // better-auth proxy
+  async rewrites() {
+    return [
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "5000",
-        pathname: "/uploads/**",
+        // Explicitly map auth requests
+        source: "/api/auth/:path*",
+        destination: process.env.BACKEND_URL + "/api/auth/:path*",
+        
       },
-    ],
+      {
+        // Explicitly map v1 API requests
+        source: "/api/:path*",
+        destination: process.env.BACKEND_URL + "/api/:path*",
+      },
+    ];
   },
 };
 

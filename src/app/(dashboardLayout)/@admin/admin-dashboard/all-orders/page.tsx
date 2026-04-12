@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import AllOrderServer from "@/components/modules/admin/all-orders/AllOrdersServer";
 
 

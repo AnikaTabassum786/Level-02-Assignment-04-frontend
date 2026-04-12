@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import OrderFromServer from "@/components/modules/orders/OrderFromServer";
 
 export default function  AllOrderPage(){

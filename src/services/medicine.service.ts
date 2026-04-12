@@ -21,10 +21,11 @@ export interface MedicineData {
 export const medicineService = {
   getMedicines: async () => {
     try {
-      const res = await fetch(`${API_URL}/api/medicines`, {
+      const res = await fetch(`${process.env.API_URL}/api/medicines`, {
         cache: "no-store",
       });
 
+console.log(process.env.API_URL)
       if (!res.ok) {
         throw new Error("Failed to fetch medicines");
       }
@@ -67,7 +68,7 @@ export const medicineService = {
    
 
     if (!res.ok) {
-        throw new Error("Failed to fetch medicines");
+        throw new Error("Failed to fetch medicines!!!!");
       }
 
       return await res.json();

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import AllMedicinesServer from "@/components/modules/admin/all-medicines/AllMedicinesServer";
 
 export default async function AllMedicinePage() {

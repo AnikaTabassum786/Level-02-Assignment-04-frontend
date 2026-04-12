@@ -15,7 +15,7 @@ import { authClient } from "@/lib/auth-client"
 import { toast } from "sonner";
 import { env } from "../../../../env"
 
-const FRONTEND_URL = env.FRONTEND_URL
+const FRONTEND_URL = env.NEXT_PUBLIC_FRONTEND_URL
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -162,7 +162,7 @@ export default function Signup() {
             )}
           />
 
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full cursor-pointer">
             Create Account
           </Button>
 

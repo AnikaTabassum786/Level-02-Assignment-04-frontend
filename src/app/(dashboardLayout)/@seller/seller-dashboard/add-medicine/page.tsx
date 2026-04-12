@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import AddMedicineFormClient from "@/components/modules/seller/add-medicine/AddMedicineFormClient";
 import AddMedicineFormServer from "@/components/modules/seller/add-medicine/AddMedicineFormServer";
 import { categoryService } from "@/services/category.service";
