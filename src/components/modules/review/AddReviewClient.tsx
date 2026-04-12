@@ -31,7 +31,8 @@ export default function AddReviewClient({
       });
 
       if (res?.error) {
-        toast.error(res.error);
+        // toast.error(res.error);
+         toast.error(String(res.error));
       } else {
         toast.success("Review submitted!");
         setRating(0);
