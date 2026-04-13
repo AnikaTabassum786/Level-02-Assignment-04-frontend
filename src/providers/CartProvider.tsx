@@ -3,7 +3,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { env } from "../../env";
 
-const API_URL = env.NEXT_PUBLIC_API_URL
+const API_URL = env.NEXT_PUBLIC_BACKEND_URL
 
 type CartContextType = {
   count: number;
@@ -26,7 +26,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       try {
 
        
-        const res = await fetch(`${API_URL}/api/cart`, {
+        const res = await fetch(`/api/cart`, {
           credentials: "include",
         });
         const data = await res.json();

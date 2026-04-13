@@ -5,7 +5,7 @@ import { error } from "console";
 
 
 
-const API_URL = env.API_URL
+const API_URL = env.BACKEND_URL
 
 export interface MedicineData {
   name: string;

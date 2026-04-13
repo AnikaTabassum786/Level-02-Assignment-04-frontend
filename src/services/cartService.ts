@@ -2,11 +2,11 @@ import { cookies } from "next/headers";
 import { env } from "../../env";
 import { error } from "console";
 
-const API_URL = env.API_URL
+const API_URL = env.BACKEND_URL
 
 export interface CartData {
-  "medicineId": string,
-  "quantity": number
+  medicineId: string,
+  quantity: number
 }
 
 export const cartService = {

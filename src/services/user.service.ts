@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
 import { env } from "../../env";
 
-const AUTH_URL = env.AUTH_URL
-const API_URL = env.API_URL
+const AUTH_URL = env.BACKEND_URL + "/api/auth";
+const API_URL = env.BACKEND_URL;
 
 export const userService = {
   getSession: async function () {

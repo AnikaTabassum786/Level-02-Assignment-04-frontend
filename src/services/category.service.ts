@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import { env } from "../../env";
 import { error } from "console";
 
-const API_URL = env.API_URL
+const API_URL = env.BACKEND_URL
 
 export interface CategoryData {
   name: string;
@@ -11,8 +11,6 @@ export interface CategoryData {
 
 
 export const categoryService = {
-
-
 getCategories: async () => {
     try {
   
