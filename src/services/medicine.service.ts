@@ -21,18 +21,18 @@ export interface MedicineData {
 export const medicineService = {
   getMedicines: async () => {
     try {
-      const res = await fetch(`${process.env.API_URL}/api/medicines`, {
+      const res = await fetch(`${API_URL}/api/medicines`, {
         cache: "no-store",
       });
 
-console.log(process.env.API_URL)
+console.log(process.env.API_URL,res.json)
       if (!res.ok) {
         throw new Error("Failed to fetch medicines");
       }
 
       return await res.json();
     } catch (error) {
-      console.error("Medicine fetch error:", error);
+      console.error("Medicine fetch error:::::", error);
       return [];
     }
   },

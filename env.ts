@@ -6,7 +6,9 @@ export const env = createEnv({
     server:{
         BACKEND_URL:z.url(),
         FRONTEND_URL:z.url(),
-    },
+    }, 
+
+    
 
     client:{
     NEXT_PUBLIC_BACKEND_URL: z.url(),

@@ -31,9 +31,9 @@ export default function CartFromClient({ cartId }: Props) {
   return (
    <>
     <div>
-      <Button onClick={handleDelete} disabled={loading} className="cursor-pointer">
+      {/* <Button onClick={handleDelete} disabled={loading} className="cursor-pointer">
       {loading ? "Deleting..." : "Delete"}
-    </Button>
+    </Button> */}
     </div>
 
    
