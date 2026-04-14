@@ -109,7 +109,7 @@ const Navbar = ({ className }: NavbarProps) => {
                 <p className="text-sm text-muted-foreground">
                   {session.user.email}
                 </p>
-                <Button onClick={handleLogout} size="sm">
+                <Button onClick={handleLogout} size="sm" className="cursor-pointer">
                   Sign Out
                 </Button>
               </div>
@@ -172,7 +172,7 @@ const Navbar = ({ className }: NavbarProps) => {
                     <Button asChild variant="outline">
                       <Link href="/login">Login</Link>
                     </Button>
-                    <Button asChild>
+                    <Button asChild className="cursor-pointer">
                       <Link href="/signup">Sign Up</Link>
                     </Button>
                   </>

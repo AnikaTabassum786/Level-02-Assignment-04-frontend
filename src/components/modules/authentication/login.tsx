@@ -10,6 +10,7 @@ import { useForm } from "@tanstack/react-form"
 import * as z from "zod"
 import { toast } from "sonner";
 import { env } from "../../../../env"
+import { useRouter } from "next/navigation"
 
 
 // const FRONTEND_URL = env.FRONTEND_URL
@@ -32,7 +33,7 @@ const Login = ({
   signupText = "Need an account?",
   className,
 }: Login1Props) => {
-
+const router = useRouter();
   const form = useForm({
     defaultValues: {
       email: "",
@@ -69,6 +70,8 @@ const Login = ({
         } else {
           toast.success("User Login Successfully", { id: toastId });
         }
+
+         router.push("/");
 
       } catch (error) {
         toast.error("Something went wrong", { id: toastId });
@@ -143,7 +146,7 @@ const Login = ({
                 )}
               />
 
-              <Button type="submit" className="w-full bg-black text-white" variant="outline">
+              <Button type="submit" className="w-full bg-black text-white cursor-pointer" variant="outline">
                 {/* {buttonText} */}
                 Login
               </Button>

@@ -50,7 +50,7 @@ export default function AllOrdersClient({ orders }: Props) {
         <table className="w-full text-sm text-left">
           <thead className="bg-gray-100">
             <tr>
-              <th className="text-center py-3 px-4">Order ID</th>
+              <th className="text-center py-3 px-4">Order Code</th>
               <th className="text-center py-3 px-4">Shipping Address</th>
               <th className="text-center py-3 px-4">Action</th>
             </tr>
