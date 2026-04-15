@@ -17,6 +17,7 @@ import {
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { updateOrder } from "@/action/order.action";
+import { toast } from "sonner";
 
 type Order = {
   id: string;
@@ -51,9 +52,9 @@ export default function AllOrdersClient({ initialData }: AllOrderClientProps) {
 
     if (res?.success) {
       router.refresh();
-      console.log("Updated Order")
+      toast.success("Updated Order")
     } else {
-      alert(res?.message || "Update failed");
+      toast.error(res?.message || "Update failed");
     }
 
     setLoadingId(null);
@@ -94,7 +95,7 @@ export default function AllOrdersClient({ initialData }: AllOrderClientProps) {
                     onChange={(e) =>
                       handleStatusChange(order.id, e.target.value)
                     }
-                    className="border rounded px-2 py-1"
+                    className="border rounded px-2 py-1 cursor-pointer"
                   >
                     <option value="PLACED">Placed</option>
                     <option value="PROCESSING">Processing</option>

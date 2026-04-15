@@ -22,7 +22,7 @@ export default function CheckoutFromClient({
 
   const handleOrder = async () => {
     if (!address) {
-      alert("Please enter shipping address");
+      toast.warning("Please enter shipping address");
       return;
     }
 

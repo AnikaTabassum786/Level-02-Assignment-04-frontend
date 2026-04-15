@@ -43,7 +43,7 @@ export default function RootLayout({
             
            <CartProvider>
             {children}
-            <Toaster richColors/>
+            <Toaster position="top-right" richColors/>
            </CartProvider>
           </ThemeProvider>
       </body>

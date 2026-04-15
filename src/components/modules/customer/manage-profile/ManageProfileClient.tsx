@@ -59,7 +59,7 @@ export default function ManageProfileClient({
             toast("Profile Updated Successfully");
             router.refresh(); // refresh data
         } else {
-            alert(res.message || "Something went wrong");
+            toast.error(res.message || "Something went wrong");
         }
     };
 
